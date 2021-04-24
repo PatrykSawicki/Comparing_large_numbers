@@ -1,0 +1,65 @@
+#include <iostream>
+#include <string>
+#include <cctype>
+
+int main()
+{
+    std::string a, b, z;
+    bool state{};
+    while(std::cin >> a >> z >> b){
+        if(z.compare(0,2,">=") == 0)
+        {
+            if(a.size() > b.size()) state = 1;
+            else state = 0;
+            if(a.size() == b.size())
+            {
+                for(unsigned int i = 0; i <= a.size(); i++)
+                {
+                    if(a[i] != b[i])
+                    {
+                        if (static_cast<int>(a[i]) > static_cast<int>(b[i]))
+                        {
+                            state = 1;
+                        }
+                        break;
+                    }
+                }            
+            }         
+            std::cout << state << std::endl;
+        }
+        if(z.compare(0,2,"<=")== 0)
+        {
+            if(a.size() < b.size()) state = 1;
+            else state = 0;
+            if(a.size() == b.size())
+            {
+                for(unsigned int i = 0; i <= a.size(); i++)
+                {
+                    if(a[i] != b[i])
+                    {
+                        if (static_cast<int>(a[i]) < static_cast<int>(b[i]))
+                        {
+                            state = 1;
+                        }
+                        break;
+                    }
+                }
+            }
+            std::cout << state << std::endl;
+        }
+        if(z.compare(0,2,"!=") == 0)
+        {
+            if(a.compare(b)!= 0) state = 1;
+            else state = 0;
+            std::cout << state << std::endl;
+        }
+        if(z.compare(0,2,"==") == 0)
+        {
+            if(a.compare(b)== 0) state = 1;
+            else state = 0;
+            std::cout << state << std::endl;
+        }
+    }
+
+    return 0;
+}
